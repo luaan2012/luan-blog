@@ -22,6 +22,12 @@ jobs:
           dotnet-version: '6.0.x'
           include-prerelease: true
 
+      - name: Install EF tools
+        run: dotnet tool install --global dotnet-ef
+
+      - name: Execute migration
+        run: dotnet ef database update 
+
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
